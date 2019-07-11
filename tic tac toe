@@ -1,0 +1,101 @@
+#first we need to create a design for a tic tac toe baord
+#in this board ,we will create a matrix of 3*3 which will contain 9 boxes
+#the user will enter the value and then on the basis of enter value,result will be predicted
+#the user can only use 8 spaces because the result can be predicted ,one may not need to use the last left row(the match will not draw)
+using namespace std;
+void box()
+{
+ cout<<"Tic tac toe\n<<endl;
+ #enter the player 1 and player 2 values(0,X)
+ cout<<"player 1(X) and player 2(0)"<<endl;
+ #now enter the structure of tic tac toe
+ cout<<"\t\t    |   |    <<endl;
+ cout<<"\t\t    <<square[1]<<"|"<<square[2]<<"|"<<square[3]<<endl;
+ cout<<"\t\t    |   |    <<endl;
+ cout<<"\t\t    |   |    <<endl;
+ cout<<"\t\t    <<square[4]<<"|"<<square[5]<<"|"<<square[6]<<endl;
+ cout<<"\t\t    |   |    <<endl;
+ cout<<"\t\t    |   |    <<endl;
+ cout<<"\t\t    <<square[7]<<"|"<<square[8]<<"|"<<square[9]<<endl;
+ cout<<"\t\t    |   |    <<endl;
+ #it will create the matrix for tic  tac toe box
+ }
+ #it will create an array "square" with their  respective positions
+ check square[10]={0,1,2,3,4,5,6,7,8,9};
+ int main()
+ {
+  int user=1;
+  char m;
+  int move,i; #here move will determine the user's move
+  box(); #box function is called
+  user=(user%2)?1:2; #it will tell the which user is playing first
+  cin>>move;
+  m=(user==1)?'X':'0';
+  if (move==1 && square[1]=='1')
+  square[1]=m;
+  else if(move==2&&square[2]=='2')
+  square[2]=m;
+  else if(move==3&&square[3]=='3')
+  square[3]=m;
+  else if(move==4&&square[4]=='4')
+  square[4]=m;
+  else if(move==5&&square[5]=='5')
+  square[5]=m;
+  else if(move==6&&square[6]=='6')
+  square[6]=m;
+  else if(move==7&&square[7]=='7')
+  square[7]=m;
+  else if(move==8&&square[8]=='8')
+  square[8]=m;
+  else if(move==9&&square[9]=='9')
+  square[9]=m;
+  else 
+   { 
+   cout<<"not accepted"<<endl;
+   user--;
+   }
+   i=win();
+   user++;
+   while(i==1)
+   board();
+   if(i==1)
+   cout<<"user"<<user<<"win";
+   else
+   {
+   cout<<"game draw"<<endl;
+   return 0;
+   }
+   #make function for winner of game
+   int win()
+   {
+   #1st row check
+   if(square[1]==square[2]&& square[2]==square[3])
+   return 1;
+   #2nd row check
+   else if(square[4]==square[5]&& square[5]==square[6])
+   return 1;
+   #3rd row check
+   else if(square[7]==square[8]&& square[8]==square[9])
+   return 1;
+   #1st column check
+    else if(square[1]==square[4]&& square[4]==square[7])
+    return 1;
+   #2nd column check
+    else if(square[2]==square[5]&& square[5]==square[8])
+    return 1;
+    #3rd column check
+     else if(square[3]==square[6]&& square[6]==square[9])
+    return 1;
+    #diagonal check
+     else if(square[1]==square[5]&& square[5]==square[9])
+    return 1;
+    #diagonal check
+     else if(square[3]==square[5]&& square[5]==square[7])
+    return 1;
+    #1 box will always left ,if a user will win(one can predict the win factor before going to the last left position
+     else if(square[1]!='1'&&square[2]!='2'&& square[3]!='3'&&square[4]!='4'&&square[5]!='5'&& square[6]!='6'&&square[7]!='7'&&square[8]!='8'&& square[9]!='9')
+    return 0;
+    else
+    return 1;
+    }
+ 
